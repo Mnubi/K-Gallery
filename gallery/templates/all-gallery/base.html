@@ -1,21 +1,25 @@
 {% load bootstrap3 %}
+{% load static%}
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
 
   {% if title %}
-  <title> K-Galllery- {{title}}</title>
+  <title>K-Gallery- {{title}}</title>
   {% else %}
-    <title> K-Galllery </title>
+    <title> K-Gallery </title>
   {% endif %}
 
   {% block styles %}
     {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/basegallery.css' %}">
   {% endblock %}
 
 </head>
 <body>
+    {% include "navbar.html" %}
+
     {% block content %} <h1 class='text-center'>News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
 
     {% block scripts %}
