@@ -1,4 +1,4 @@
-#!/home/moringa/Django/virtual/bin/python
+#!/home/moringa/K-Gallery/virtual/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
