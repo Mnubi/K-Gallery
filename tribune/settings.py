@@ -17,14 +17,13 @@ import cloudinary.uploader
 import cloudinary.api
 from decouple import config
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dn7istysq',
-    'API_KEY': '959639891195696',
-    'API_SECRET': 'HIg7O_3JQAe7xOB3H54mmonaXbU'
-}
+# adding config
+cloudinary.config( 
+  cloud_name = "dn7istysq", 
+  api_key = "959639891195696", 
+  api_secret = "HIg7O_3JQAe7xOB3H54mmonaXbU" 
+)
 
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,6 +35,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -46,8 +46,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'gallery.apps.GalleryConfig',
     'bootstrap4',
-    'cloudinary_storage',
-    'django.contrib.staticfiles',
     'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -99,11 +97,7 @@ DATABASES = {
         'PASSWORD':config('PASSWORD'),
     }
 }
-cloudinary.config( 
-    cloud_name =config('CLOUD_NAME'),
-    api_key=config('CLOUD_API_KEY'), 
-    api_secret=config('API_SECRET'),
-)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -138,18 +132,26 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+# Static files (CSS, JavaScript, Images)\
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+if DEBUG:
+   STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'static'),
+   ]
+else:
+   STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
-]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 # configuring the location for media
-MEDIA_URL = 'static/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

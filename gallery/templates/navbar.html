@@ -1,13 +1,13 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
       <div class="navbar-header">
-          <a class="navbar-brand" href="{% url 'home' %}">Vitalis Album</a>
+          <a class="navbar-brand" href="{% url 'index' %}">K-Gallery</a>
       </div>
 
       <!-- search form for searching categories -->
   <div class="col-sm-4 col-md-4 navbar-right">
       <div class="navbar-form" role="search" action="/">
-          <form class="col-md-6" role="search" action="{% url 'search_category' %}">
+          <form class="col-md-6" role="search" action="{% url 'search' %}">
               <div class="input-group">
                   <input type="text" class="form-control" placeholder="search images category" name="category">
                   <div class="input-group-btn">
@@ -30,7 +30,7 @@
               <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdown">
                   {% for location in location %}
                   <p style="margin-left:2%"><a class="dropdown-item"
-                          href="/location/{{location.location_name}}">{{location.location_name}}</a></p>
+                          href="/location/{{location}}">{{location.location_name}}</a></p>
                   {%endfor%}
               </div>
           </li>

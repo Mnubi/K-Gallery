@@ -1,14 +1,14 @@
 
 from django.shortcuts import render
-from .models import Image, Category, Location
+from .models import Photos, Category, Location
 # Create your views here.
 
 
 # index function to display all images
 def index(request):
     # get all images ordered by the most recent
-    images = Image.objects.all().order_by('-id')
-    # images = Image.objects.all()
+    images = Photos.objects.all().order_by('-id')
+    # images = Photos.objects.all()
     locations = Location.objects.all()
     categories = Category.objects.all()
     title = 'Homepage'
@@ -20,7 +20,7 @@ def search(request):
     if 'category' in request.GET and request.GET["category"]:
         # change the search to be in lowercase
         search_term = request.GET.get("category").lower()
-        searched_images = Image.filter_by_category(search_term)
+        searched_images = Photos.filter_by_category(search_term)
         message = f"{search_term}"
         locations = Location.objects.all()
 
@@ -35,7 +35,7 @@ def search(request):
 # display all images in a specific location
 def location(request, location_id):
     locations = Location.objects.all()
-    images = Image.objects.filter(location_id=location_id)
+    images = Photos.objects.filter(location_id=location_id)
     # get the location name
     location = Location.objects.get(id=location_id)
     title = location
@@ -45,6 +45,6 @@ def location(request, location_id):
 # display single image details
 def image(request, image_id):
     locations = Location.objects.all()
-    image = Image.objects.get(id=image_id)
+    image = Photos.objects.get(id=image_id)
     title = image
     return render(request, 'image.html', {'image': image, 'locations': locations, 'title': title})

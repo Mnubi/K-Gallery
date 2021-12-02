@@ -1,17 +1,11 @@
 {%extends 'base.html'%}
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 {% load static%}
 
 {% block styles %}
 {% bootstrap_css %}
-<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/basegallery.css' %}">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -107,7 +101,7 @@
 </div>
 
 <footer class="footer">
-    <p class="text-center">© Rodger 2021. All Rights Reserved</p>
+    <p class="text-center">Rodger©2021. All Rights Reserved</p>
 </footer>
 
 {% endblock %}

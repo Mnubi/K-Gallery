@@ -41,7 +41,7 @@ class Category(models.Model):
         self.delete() 
 
 #Image class model
-class Image(models.Model):
+class Photos(models.Model):
     """
     Image class for creating our image instances
     """
