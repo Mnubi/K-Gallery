@@ -25,12 +25,12 @@
           <li class="dropdown">
               <a class="nav-link dropdown-toggle location navbar-brand" href="#" id="navbarDropdown" role="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">
-                  Search Images Location
+                  Search Images/Location
               </a>
               <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdown">
                   {% for location in location %}
                   <p style="margin-left:2%"><a class="dropdown-item"
-                          href="/location/{{location}}">{{location.location_name}}</a></p>
+                          href="/location/{{location}}">{{location.location}}</a></p>
                   {%endfor%}
               </div>
           </li>
