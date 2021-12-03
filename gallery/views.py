@@ -43,7 +43,7 @@ def location(request, location_id):
 
 
 # display single image details
-def image(request, image_id):
+def photo(request, image_id):
     locations = Location.objects.all()
     image = Photos.objects.get(id=image_id)
     title = image
