@@ -2,3 +2,12 @@ h1
 {
   color: rgb(15, 18, 190);
 }
+body{
+  background-color: darkkhaki;
+}
+p{
+  font-weight: 600;
+}
+.navbar{
+  background-color: darkorange;
+}
