@@ -9,7 +9,7 @@ urlpatterns=[
     url(r'^$', views.index,name='index'),
     url(r'^search/', views.search, name='search'),
     url(r'^location/(?P<location_name>\w+)',views.location,name = 'location'),
-    # url('^image/(?P<image_id>\d+)/$',views.image_properties, name='image'),
+    
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

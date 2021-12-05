@@ -16,21 +16,30 @@ def index(request):
 
 
 # search function to search for images
+# search function to search for images
 def search(request):
+    
+    location=Location.get_locations()
+
     if 'category' in request.GET and request.GET["category"]:
-        # change the search to be in lowercase
-        search_term = request.GET.get("category").lower()
-        searched_images = Photos.filter_by_category(search_term)
-        message = f"{search_term}"
-        locations = Location.objects.all()
-
-        return render(request, 'search.html', {"message": message, "images": searched_images, 'locations': locations})
-
+        category = request.GET.get("category")
+        search = Photos.search_by_category(category)
+        message = f"{category}"
+        return render(request, 'search.html',{"message":message,"category": search,"location":location})
     else:
-        locations = Location.objects.all()
-        message = "You haven't searched for any term"
-        return render(request, 'search.html', {"message": message, 'locations': locations})
+        return render(request, 'search.html')
 
+def location(request,location_name):
+    location=Location.get_locations()
+    image= Photos.get_images_by_location(location_name)
+    message = f"{location_name}"
+    return render(request, 'location.html',{"message":message,"image": image,"location":location})
+
+def image_properties(request,image_id):
+    location=Location.get_locations()
+
+    image = Photos.get_image_by_id(image_id)
+    return render(request, {"image" : image,"location":location})
 
 # display all images in a specific location
 def location(request, location_id):
@@ -43,7 +52,7 @@ def location(request, location_id):
 
 
 # display single image details
-def photo(request, image_id):
+def image(request, image_id):
     locations = Location.objects.all()
     image = Photos.objects.get(id=image_id)
     title = image
