@@ -14,8 +14,6 @@ def index(request):
     title = 'Homepage'
     return render(request, 'index.html', {'images': images, 'locations': locations, 'categories': categories, 'title': title})
 
-
-# search function to search for images
 # search function to search for images
 def search(request):
     
@@ -35,7 +33,7 @@ def location(request,location_name):
     message = f"{location_name}"
     return render(request, 'location.html',{"message":message,"image": image,"location":location})
 
-def image_properties(request,image_id):
+def Photo_properties(request,image_id):
     location=Location.get_locations()
 
     image = Photos.get_image_by_id(image_id)
