@@ -28,13 +28,13 @@
 
         {% for image in images%}
         <div class="images">
-            <a href="#{{image.id}}" data-toggle="modal" data-target="#myModal">
+            <a href="" data-toggle="modal" data-target="#myModal{{image.id}}" >
                 <h5 class="text-center" style="font-size:25px; font-weight:600">{{image.image_name}}</h5>
                 <img src="{{image.image.url}}" alt="{{image.image_name}}" style="width:100%;width:100%">
             </a>
 
             <!-- The Modal -->
-            <div class="modal" id="myModal">
+            <div class="modal" id="myModal{{image.id}}">
                 <div class="modal-dialog">
                     <div class="modal-content">
 
@@ -49,9 +49,9 @@
                         <!-- Modal body -->
                         <div class="modal-body">
                             <img src="{{image.image.url}}" alt="{{image.image_name}}" style="width:100%;width:100%">
-                            <p>{{image.image_details}}</p>
-                            <p>{{image.location}}</p>
-                            <p>{{image.category}}</p>
+                            <p>Image Description: {{image.image_details}}</p>
+                            <p>Image Location: {{image.location}}</p>
+                            <p>Image Category: {{image.category}}</p>
                         </div>
                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1">
                             <input id="{{image.id}}-url" class="form-control input-md responsive" type="text"
@@ -95,28 +95,3 @@
 
 {% endblock %}
 
-<div class="modal" id="{{image.id}}" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">{{image.image_name}}</h4>
-                <img src="{{image.image.url}}" class="img-responsive" alt="Image" style="width:100%;max-width:100%">
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <p>{{image.image_details}}</p>
-                <p>{{image.location}}</p>
-                <p>{{image.category}}</p>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" onclick="copyToClipboard();">Copy</button>
-            </div>
-
-        </div>
-    </div>
-</div>
