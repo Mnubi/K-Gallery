@@ -9,6 +9,7 @@ body{
   background-color: darkkhaki;
   font-family: 'BioRhyme', serif;
   font-family: 'Zen Antique', serif;
+  font-size: 17px;
 }
 p{
   font-weight: 600;
@@ -20,4 +21,9 @@ p{
   font-weight: bold;
   font-style: italic;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+footer{
+  background-color: darkorange;
+  padding: 5px;
 }
