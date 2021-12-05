@@ -16,14 +16,15 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from decouple import config
+import django_heroku
 
 # adding config
-cloudinary.config( 
-  cloud_name = "dn7istysq", 
-  api_key = "959639891195696", 
-  api_secret = "HIg7O_3JQAe7xOB3H54mmonaXbU" 
-)
 
+cloudinary.config( 
+    cloud_name =config('CLOUD_NAME'),
+    api_key=config('CLOUD_API_KEY'), 
+    api_secret=config('API_SECRET')
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'tribune.urls'
@@ -157,3 +159,6 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
