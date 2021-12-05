@@ -1,13 +1,23 @@
+
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Zen+Antique&display=swap');
+
 h1
 {
   color: rgb(15, 18, 190);
 }
 body{
   background-color: darkkhaki;
+  font-family: 'BioRhyme', serif;
+  font-family: 'Zen Antique', serif;
 }
 p{
   font-weight: 600;
 }
 .navbar{
   background-color: darkorange;
+}
+.navbar-brand{
+  font-weight: bold;
+  font-style: italic;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
